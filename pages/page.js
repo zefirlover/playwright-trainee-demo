@@ -1,4 +1,4 @@
-class PomPage {
+class Page {
     /**
     * @param {import('playwright').Page} page 
     */
@@ -20,4 +20,4 @@ class PomPage {
     }
 }
 
-module.exports = { PomPage };
+module.exports = { Page };

@@ -1,11 +1,10 @@
-const { expect } = require('@playwright/test');
-const { PomPage } = require('./pomPage');
+const { Page } = require('./page');
 
 const catalogButton = '.NavbarCatalog_wrapper__kVmUY';
 const catalogContainer = '.Catalog_container__0jVbE';
 const firstCategoryLabel = 'label[for="category1"]';
 
-class ProductMapPage extends PomPage {
+class ProductMapPage extends Page {
     constructor(page) {
         super(page);
         this.page = page;
