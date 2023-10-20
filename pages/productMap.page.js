@@ -1,18 +1,31 @@
 const { expect } = require('@playwright/test');
+const { PomPage } = require('./pomPage');
 
-exports.ProductMapPage = class ProductMapPage {
+const catalogButton = '.NavbarCatalog_wrapper__kVmUY';
+const catalogContainer = '.Catalog_container__0jVbE';
+const firstCategoryLabel = 'label[for="category1"]';
+
+class ProductMapPage extends PomPage {
     constructor(page) {
+        super(page);
         this.page = page;
-        this.catalogButton = page.locator('.NavbarCatalog_wrapper__kVmUY');
-        this.catalogContainer = page.locator('.Catalog_container__0jVbE');
-        this.firstCategoryLabel = page.locator('label[for="category1"]');
     }
 
-    async goToProducts() {
-        await this.page.goto('/products');
+    async getCatalogContainer() {
+        return await super.getElement(catalogContainer);
+    }
+
+    async getFirstCategoryLabel() {
+        return await super.getElement(firstCategoryLabel);
+    }
+
+    async openProductsUrl() {
+        await super.openUrl('https://rentzila.com.ua/products/');
     }
 
     async clickCatalogButton() {
-        await this.catalogButton.click();
+        await super.clickElement(catalogButton);
     }
 }
+
+module.exports = { ProductMapPage };
